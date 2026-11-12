@@ -1,8 +1,101 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+    provider = "prisma-client"
+    output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+    provider = "postgresql"
+}
+
+enum Role {
+    ADOPTER
+    SHELTER
+}
+
+enum PetSpecies {
+    DOG
+    CAT
+    OTHER
+}
+
+enum HousingTypes {
+    HOUSE
+    APARTMENT
+}
+
+enum PetSize {
+    SMALL
+    MEDIUM
+    LARGE
+}
+
+enum PetStatus {
+    AVAILABLE
+    IN_PROGRESS
+    ADOPTED
+}
+
+enum RequestStatus {
+    PENDING
+    APPROVED
+    REJECTED
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    name      String
+    email     String   @unique
+    password  String
+    role      Role
+    createdAt DateTime @default(now())
+
+    adopter Adopter?
+    shelter Shelter?
+}
+
+model Adopter {
+    id                  Int               @id @default(autoincrement())
+    adoptionRequests    AdoptionRequest[]
+    peopleLivingWithYou Int
+    timeOutOfHome       Int
+    petExperience       String
+
+    user User @relation(fields: [userId], references: [id])
+}
+
+model Shelter {
+    id                  Int               @id @default(autoincrement())
+    name                String
+    isVerified          Boolean           @default(false)
+
+    administrators         User[]
+}
+
+model Pet {
+    id               Int               @id @default(autoincrement())
+    name             String
+    species          PetSpecies
+    age              Int
+    animalSize       PetSize
+    description      String
+    photoUrl         String
+    status           PetStatus         @default(AVAILABLE)
+    adoptionRequests AdoptionRequest[]
+    petCity          String
+    petState         String
+    breed            String
+
+    shelter Shelter @relation(fields: [shelterId], references: [id])
+}
+
+model AdoptionRequest {
+    id        Int           @id @default(autoincrement())
+    userId    Int
+    petId     Int
+    status    RequestStatus @default(PENDING)
+    createdAt DateTime      @default(now())
+    allInAgreement      Boolean
+
+    adopter Adopter @relation(fields: [adopterId], references: [id])
+    pet     Pet     @relation(fields: [petId], references: [id])
 }
