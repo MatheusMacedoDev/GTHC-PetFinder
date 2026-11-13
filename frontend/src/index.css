@@ -1,5 +1,15 @@
+@font-face {
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 200 1000;
+    font-stretch: 75% 125%;
+    font-display: swap;
+    src: url("./assets/fonts/nunito-sans-variable.woff2") format("woff2");
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito Sans";
 }
