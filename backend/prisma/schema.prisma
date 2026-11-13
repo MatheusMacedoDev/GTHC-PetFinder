@@ -35,6 +35,11 @@ enum PetStatus {
     ADOPTED
 }
 
+enum PetSex {
+    MALE
+    FEMALE
+}
+
 enum RequestStatus {
     PENDING
     APPROVED
@@ -43,6 +48,7 @@ enum RequestStatus {
 
 model User {
     id        Int      @id @default(autoincrement())
+    shelterId Int?
     name      String
     email     String   @unique
     password  String
@@ -50,51 +56,64 @@ model User {
     createdAt DateTime @default(now())
 
     adopter Adopter?
-    shelter Shelter?
+    shelter Shelter? @relation(fields: [shelterId], references: [id])
 }
 
 model Adopter {
     id                  Int               @id @default(autoincrement())
-    adoptionRequests    AdoptionRequest[]
+    userId              Int               @unique
     peopleLivingWithYou Int
     timeOutOfHome       Int
     petExperience       String
+    phoneNumber         String
+    housingType         HousingTypes
+    adoptionRequests    AdoptionRequest[]
 
     user User @relation(fields: [userId], references: [id])
 }
 
 model Shelter {
-    id                  Int               @id @default(autoincrement())
-    name                String
-    isVerified          Boolean           @default(false)
+    id         Int     @id @default(autoincrement())
+    name       String
+    isVerified Boolean @default(false)
 
-    administrators         User[]
+    administrators User[]
+    pets           Pet[]
 }
 
 model Pet {
     id               Int               @id @default(autoincrement())
+    shelterId        Int
     name             String
     species          PetSpecies
-    age              Int
+    birthDate        DateTime
     animalSize       PetSize
     description      String
-    photoUrl         String
+    photoUrls        String[]          @default([])
     status           PetStatus         @default(AVAILABLE)
+    sex              PetSex
     adoptionRequests AdoptionRequest[]
     petCity          String
     petState         String
     breed            String
+    isVaccinated     Boolean           @default(false)
+    isNeutered       Boolean           @default(false)
+    isDewormed       Boolean           @default(false)
+    isMicrochipped   Boolean           @default(false)
+    deletedAt        DateTime?
+    createdAt        DateTime          @default(now())
 
     shelter Shelter @relation(fields: [shelterId], references: [id])
 }
 
 model AdoptionRequest {
-    id        Int           @id @default(autoincrement())
-    userId    Int
-    petId     Int
-    status    RequestStatus @default(PENDING)
-    createdAt DateTime      @default(now())
-    allInAgreement      Boolean
+    id             Int           @id @default(autoincrement())
+    adopterId      Int
+    petId          Int
+    status         RequestStatus @default(PENDING)
+    createdAt      DateTime      @default(now())
+    motivation     String
+    allInAgreement Boolean       @default(false)
 
     adopter Adopter @relation(fields: [adopterId], references: [id])
     pet     Pet     @relation(fields: [petId], references: [id])
