@@ -1,0 +1,86 @@
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 64px;
+    background-color: var(--color-bg-surface);
+}
+
+.brand-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+}
+
+.home-title {
+    font-size: 22px;
+    color: var(--color-text-primary);
+}
+
+.navigator {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.nav-link:hover {
+    color: var(--color-primary-hover);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.favorite-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 256px;
+    border: none;
+    background-color: var(--color-neutral);
+    color: var(--color-text-primary);
+}
+
+.favorite-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}
+
+.login-button {
+    padding: 14px 18px;
+    border-radius: 256px;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-neutral);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}

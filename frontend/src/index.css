@@ -7,6 +7,19 @@
     src: url("./assets/fonts/nunito-sans-variable.woff2") format("woff2");
 }
 
+:root {
+    --color-bg-page: #fafaf9;
+    --color-bg-surface: #ffffff;
+
+    --color-text-primary: #1c1917;
+    --color-text-secundary: #6b655f;
+    --color-text-inverted: #ffffff;
+
+    --color-primary: #10b981;
+    --color-primary-hover: #087f5b;
+    --color-neutral: #f5f4f0;
+}
+
 * {
     margin: 0;
     padding: 0;
