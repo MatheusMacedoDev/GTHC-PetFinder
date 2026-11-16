@@ -10,13 +10,18 @@
 :root {
     --color-bg-page: #fafaf9;
     --color-bg-surface: #ffffff;
+    --color-bg-banner: #e8f8f2;
+    --color-top-elipse: #cff1e4;
 
     --color-text-primary: #1c1917;
-    --color-text-secundary: #6b655f;
+    --color-text-secundary: #9a6500;
+    --color-text-tertiary: #6b655f;
     --color-text-inverted: #ffffff;
+    --color-text-placeholder: #a8a29e;
 
     --color-primary: #10b981;
     --color-primary-hover: #087f5b;
+    --color-secundary: #fff5d9;
     --color-neutral: #f5f4f0;
 }
 
