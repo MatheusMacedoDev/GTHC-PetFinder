@@ -1,5 +1,7 @@
 import "./index.css";
 
+import { useCallback, useState, type KeyboardEvent } from "react";
+
 import {
     ArrowDown,
     ArrowUpRight,
@@ -11,43 +13,27 @@ import {
     X,
 } from "lucide-react";
 
-import NinaImage from "../../../../assets/resources/galeria-pet-01.webp";
-import BentoImage from "../../../../assets/resources/galeria-pet-02.webp";
-import LolaImage from "../../../../assets/resources/galeria-pet-03.webp";
-import TheoImage from "../../../../assets/resources/galeria-pet-04.webp";
-
-const pets = [
-    {
-        name: "Nina",
-        age: "2 anos",
-        details: "Vira-lata · porte médio",
-        location: "Vila Mariana, SP",
-        image: NinaImage,
-    },
-    {
-        name: "Bento",
-        age: "8 meses",
-        details: "Gato SRD · porte pequeno",
-        location: "Pinheiros, SP",
-        image: BentoImage,
-    },
-    {
-        name: "Lola",
-        age: "4 anos",
-        details: "Beagle · porte médio",
-        location: "Moema, SP",
-        image: LolaImage,
-    },
-    {
-        name: "Theo",
-        age: "1 ano",
-        details: "Gato SRD · porte pequeno",
-        location: "Perdizes, SP",
-        image: TheoImage,
-    },
-];
+import PetDetails from "../pet-details";
+import type { Pet } from "../../../../entities/pet/model";
+import { pets } from "../../../../entities/pet/mocks";
 
 export default function Gallery() {
+    const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
+    const closePet = useCallback(() => setSelectedPet(null), []);
+
+    function openPet(pet: Pet) {
+        setSelectedPet(pet);
+    }
+
+    function handleCardKeyDown(event: KeyboardEvent<HTMLElement>, pet: Pet) {
+        if (event.target !== event.currentTarget) return;
+
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openPet(pet);
+        }
+    }
+
     return (
         <section className="pet-gallery">
             <div className="gallery-toolbar">
@@ -100,10 +86,27 @@ export default function Gallery() {
 
             <div className="pet-grid">
                 {pets.map((pet) => (
-                    <article className="pet-card" key={pet.name}>
+                    <article
+                        className="pet-card"
+                        key={pet.name}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => openPet(pet)}
+                        onKeyDown={(event) => handleCardKeyDown(event, pet)}
+                        aria-label={`Ver detalhes de ${pet.name}`}
+                    >
                         <div className="pet-image-wrap">
-                            <img className="pet-image" src={pet.image} />
-                            <button className="favorite-button" type="button">
+                            <img
+                                className="pet-image"
+                                src={pet.image}
+                                alt={`Foto de ${pet.name}`}
+                            />
+                            <button
+                                className="favorite-button"
+                                type="button"
+                                onClick={(event) => event.stopPropagation()}
+                                aria-label={`Favoritar ${pet.name}`}
+                            >
                                 <Heart size={18} aria-hidden="true" />
                             </button>
                             <button className="profile-button" type="button">
@@ -116,7 +119,9 @@ export default function Gallery() {
                                 <h3>{pet.name}</h3>
                                 <span className="pet-age">{pet.age}</span>
                             </div>
-                            <p className="pet-details">{pet.details}</p>
+                            <p className="pet-details">
+                                {pet.breed} · porte {pet.size}
+                            </p>
                             <p className="pet-location">
                                 <MapPin size={13} />
                                 {pet.location}
@@ -133,6 +138,14 @@ export default function Gallery() {
                     Ver mais pets
                 </button>
             </div>
+
+            {selectedPet && (
+                <PetDetails
+                    key={selectedPet.name}
+                    pet={selectedPet}
+                    onClose={closePet}
+                />
+            )}
         </section>
     );
 }

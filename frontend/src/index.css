@@ -24,6 +24,11 @@
     --color-secundary: #fff5d9;
     --color-neutral: #f5f4f0;
     --color-border: #e7e2dc;
+    --color-overlay: rgb(28 25 23 / 55%);
+    --color-bg-female: #fff0f0;
+    --color-text-female: #b86b6b;
+    --color-bg-info: #eef6fc;
+    --color-text-info: #5b8db8;
 }
 
 * {

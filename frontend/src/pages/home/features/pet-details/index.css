@@ -1,0 +1,380 @@
+.pet-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background-color: var(--color-overlay);
+}
+
+.pet-details-modal {
+    display: grid;
+    grid-template-columns: 1fr 1.12fr;
+    width: min(956px, 100%);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    background-color: var(--color-bg-surface);
+    box-shadow: 0 24px 70px rgb(from var(--color-text-primary) r g b / 25%);
+}
+
+.pet-details-gallery,
+.pet-details-content {
+    padding: 20px;
+}
+
+.pet-main-photo {
+    position: relative;
+    height: 474px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.pet-main-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-counter {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background-color: var(--color-overlay);
+    color: var(--color-text-inverted);
+    font-size: 10px;
+}
+
+.pet-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 10px;
+}
+
+.pet-thumbnails button {
+    height: 106px;
+    padding: 2px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.pet-thumbnails button.is-selected {
+    border-color: var(--color-primary);
+}
+
+.pet-thumbnails img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.shelter-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    color: var(--color-primary);
+}
+
+.shelter-card > div {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.shelter-card strong {
+    color: var(--color-text-primary);
+    font-size: 11px;
+}
+
+.shelter-card span {
+    color: var(--color-text-tertiary);
+    font-size: 9px;
+}
+
+.pet-details-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.pet-details-header,
+.pet-name-row,
+.pet-modal-actions,
+.pet-details-location,
+.pet-metadata,
+.pet-metadata > span,
+.personality-tags,
+.personality-tag,
+.health-tags,
+.health-tags > span,
+.adoption-section > p,
+.adoption-section > button {
+    display: flex;
+    align-items: center;
+}
+
+.pet-details-header {
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.pet-name-row {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pet-name-row h2 {
+    color: var(--color-text-primary);
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.available-badge {
+    padding: 5px 8px;
+    border-radius: 999px;
+    background-color: var(--color-bg-banner);
+    color: var(--color-primary-hover);
+    font-size: 9px;
+}
+
+.pet-modal-actions {
+    gap: 8px;
+}
+
+.pet-modal-actions button {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--color-neutral);
+    color: var(--color-text-primary);
+    cursor: pointer;
+}
+
+.pet-modal-actions button:hover {
+    color: var(--color-primary);
+}
+
+.pet-details-location {
+    gap: 5px;
+    margin-top: 10px;
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+}
+
+.pet-details-location svg {
+    color: var(--color-primary);
+}
+
+.pet-metadata {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.pet-metadata > span {
+    gap: 5px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background-color: var(--color-neutral);
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+}
+
+.pet-metadata > .metadata-age {
+    background-color: var(--color-secundary);
+    color: var(--color-text-secundary);
+}
+
+.pet-metadata > .metadata-sex {
+    background-color: var(--color-bg-female);
+    color: var(--color-text-female);
+}
+
+.pet-profile-section {
+    margin-top: 18px;
+}
+
+.pet-profile-section h3 {
+    color: var(--color-text-primary);
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.personality-tags,
+.health-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.personality-tag,
+.health-tags > span {
+    gap: 5px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    background-color: var(--color-neutral);
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+}
+
+.personality-tag.mint,
+.health-tags > span {
+    background-color: var(--color-bg-banner);
+    color: var(--color-primary-hover);
+}
+
+.personality-tag.gold {
+    background-color: var(--color-secundary);
+    color: var(--color-text-secundary);
+}
+
+.personality-tag.blue {
+    background-color: var(--color-bg-info);
+    color: var(--color-text-info);
+}
+
+.pet-description {
+    margin-top: 10px;
+    color: var(--color-text-tertiary);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.ideal-home-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.ideal-home-item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--color-neutral);
+    color: var(--color-primary);
+}
+
+.ideal-home-item strong {
+    color: var(--color-text-primary);
+    font-size: 10px;
+}
+
+.ideal-home-item span {
+    color: var(--color-text-tertiary);
+    font-size: 9px;
+}
+
+.adoption-section {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: var(--color-secundary);
+}
+
+.adoption-section > p {
+    gap: 8px;
+    color: var(--color-text-secundary);
+    font-size: 10px;
+}
+
+.adoption-section > p svg {
+    flex-shrink: 0;
+}
+
+.adoption-section > button {
+    width: 100%;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 12px;
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.adoption-section > button:hover {
+    background-color: var(--color-primary-hover);
+}
+
+@media (max-width: 760px) {
+    .pet-details-modal {
+        grid-template-columns: 1fr;
+    }
+
+    .pet-main-photo {
+        height: min(55vh, 380px);
+    }
+
+    .pet-thumbnails button {
+        height: 88px;
+    }
+
+    .pet-details-gallery,
+    .pet-details-content {
+        padding: 16px;
+    }
+
+    .pet-details-gallery {
+        padding-bottom: 0;
+    }
+
+    .pet-details-content {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .pet-modal-backdrop {
+        padding: 8px;
+    }
+
+    .pet-details-modal {
+        max-height: calc(100dvh - 16px);
+    }
+
+    .pet-name-row h2 {
+        font-size: 28px;
+    }
+
+    .pet-thumbnails button {
+        height: 74px;
+    }
+
+    .ideal-home-grid {
+        grid-template-columns: 1fr;
+    }
+}
