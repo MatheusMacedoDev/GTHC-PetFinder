@@ -31,17 +31,19 @@ const homeIcons = [House, Activity, PawPrint];
 type PetDetailsProps = {
     pet: Pet;
     onClose: () => void;
+    onAdopt: (pet: Pet) => void;
 };
 
-export default function PetDetails({ pet, onClose }: PetDetailsProps) {
+export default function PetDetails({
+    pet,
+    onClose,
+    onAdopt,
+}: PetDetailsProps) {
     const [photoIndex, setPhotoIndex] = useState(0);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
     const dialogRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        const previousOverflow = document.body.style.overflow;
-        const previousFocus = document.activeElement as HTMLElement | null;
-
         function handleKeyDown(event: KeyboardEvent) {
             if (event.key === "Escape") {
                 onClose();
@@ -215,7 +217,7 @@ export default function PetDetails({ pet, onClose }: PetDetailsProps) {
                             <HandHeart size={16} />A adoção é responsável e
                             inclui uma conversa com o abrigo.
                         </p>
-                        <button type="button">
+                        <button type="button" onClick={() => onAdopt(pet)}>
                             <Heart size={15} />
                             Quero Adotar
                         </button>

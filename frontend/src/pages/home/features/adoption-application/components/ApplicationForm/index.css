@@ -1,0 +1,104 @@
+.adoption-application-form {
+    margin-top: 22px;
+}
+
+.adoption-application-field-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.adoption-application-field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.adoption-application-field > span:first-child {
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 700;
+    user-select: none;
+}
+
+.adoption-application-validation {
+    margin-top: 18px;
+    color: #dc5a5a;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.adoption-application-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.adoption-application-back,
+.adoption-application-continue {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.adoption-application-back {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+}
+
+.adoption-application-autosave {
+    flex: 1;
+    color: var(--adoption-color-text-soft);
+    font-size: 10px;
+    text-align: right;
+}
+
+.adoption-application-continue {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+}
+
+.adoption-application-continue:hover {
+    border-color: var(--color-primary-hover);
+    background-color: var(--color-primary-hover);
+}
+
+.adoption-application-continue:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.adoption-application-continue:disabled:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+.adoption-application-back:hover {
+    background-color: var(--adoption-color-hover);
+}
+
+@media (max-width: 420px) {
+    .adoption-application-field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .adoption-application-autosave {
+        display: none;
+    }
+
+    .adoption-application-footer {
+        justify-content: space-between;
+    }
+}

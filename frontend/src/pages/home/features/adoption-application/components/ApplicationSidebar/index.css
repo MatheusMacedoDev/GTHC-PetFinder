@@ -1,0 +1,209 @@
+.adoption-application-sidebar {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 24px 20px;
+    background-color: var(--adoption-color-sidebar);
+}
+
+.adoption-application-intro-icon {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 10px;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+}
+
+.adoption-application-intro h2 {
+    margin-top: 12px;
+    color: var(--color-text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.adoption-application-intro p {
+    max-width: 190px;
+    margin-top: 6px;
+    color: var(--adoption-color-text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.adoption-application-steps {
+    margin-top: 8px;
+    list-style: none;
+}
+
+.adoption-application-steps li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    color: var(--adoption-color-text-soft);
+}
+
+.adoption-application-steps li:not(:last-child)::after {
+    position: absolute;
+    top: 42px;
+    bottom: -8px;
+    left: 15px;
+    width: 1px;
+    background-color: var(--adoption-color-step-line);
+    content: "";
+}
+
+.adoption-application-steps li.is-completed:not(:last-child)::after {
+    background-color: var(--color-primary);
+}
+
+.adoption-application-step-marker {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid var(--adoption-color-step-line);
+    border-radius: 50%;
+    background-color: var(--color-bg-surface);
+    color: var(--adoption-color-text-soft);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.adoption-application-steps .is-completed .adoption-application-step-marker,
+.adoption-application-steps .is-current .adoption-application-step-marker {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+}
+
+.adoption-application-steps .is-current .adoption-application-step-marker {
+    box-shadow: 0 0 0 4px var(--adoption-color-current-ring);
+}
+
+.adoption-application-steps li > div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.adoption-application-steps strong {
+    color: var(--adoption-color-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.adoption-application-steps li.is-completed strong,
+.adoption-application-steps li.is-current strong {
+    color: var(--color-text-primary);
+}
+
+.adoption-application-steps li > div > span {
+    font-size: 10px;
+}
+
+.adoption-application-pet-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: var(--color-bg-surface);
+}
+
+.adoption-application-pet-card img {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.adoption-application-pet-card > div {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.adoption-application-pet-card span {
+    color: var(--adoption-color-text-muted);
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.adoption-application-pet-card strong {
+    color: var(--color-text-primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.adoption-application-pet-card > svg {
+    color: var(--color-primary);
+}
+
+.adoption-application-help {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--adoption-color-text-muted);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.adoption-application-help:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+    .adoption-application-sidebar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .adoption-application-intro p,
+    .adoption-application-help {
+        display: none;
+    }
+
+    .adoption-application-intro h2 {
+        margin-top: 8px;
+    }
+
+    .adoption-application-steps {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 0;
+    }
+
+    .adoption-application-steps li {
+        min-height: 0;
+    }
+
+    .adoption-application-steps li:not(:last-child)::after,
+    .adoption-application-steps li > div {
+        display: none;
+    }
+
+    .adoption-application-pet-card {
+        display: none;
+    }
+}

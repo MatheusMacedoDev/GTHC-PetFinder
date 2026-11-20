@@ -29,6 +29,19 @@
     --color-text-female: #b86b6b;
     --color-bg-info: #eef6fc;
     --color-text-info: #5b8db8;
+
+    --adoption-color-overlay: rgb(28 25 23 / 58%);
+    --adoption-color-sidebar: #f8f8f4;
+    --adoption-color-soft-green: #eef8f3;
+    --adoption-color-selected: #f3fbf7;
+    --adoption-color-selected-ring: rgb(16 185 129 / 12%);
+    --adoption-color-current-ring: rgb(16 185 129 / 10%);
+    --adoption-color-focus-ring: rgb(16 185 129 / 14%);
+    --adoption-color-close: #f5f5f1;
+    --adoption-color-hover: #efefe9;
+    --adoption-color-step-line: #dde1dc;
+    --adoption-color-text-muted: #858780;
+    --adoption-color-text-soft: #a5a79f;
 }
 
 * {

@@ -20,15 +20,10 @@ export default function Banner() {
                         <Search size={18} />
                         <input
                             type="text"
-                            aria-label="Busque por nome, raça ou cidade"
                             placeholder="Busque por nome, raça ou cidade"
                         />
                     </div>
-                    <button
-                        className="search-button"
-                        type="button"
-                        aria-label="Buscar animais"
-                    >
+                    <button className="search-button" type="button">
                         <ArrowRight size={18} />
                     </button>
                 </div>

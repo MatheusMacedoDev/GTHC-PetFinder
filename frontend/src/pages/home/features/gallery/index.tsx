@@ -17,12 +17,21 @@ import PetDetails from "../pet-details";
 import type { Pet } from "../../../../entities/pet/model";
 import { pets } from "../../../../entities/pet/mocks";
 
-export default function Gallery() {
+type GalleryProps = {
+    onAdopt: (pet: Pet) => void;
+};
+
+export default function Gallery({ onAdopt }: GalleryProps) {
     const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
     const closePet = useCallback(() => setSelectedPet(null), []);
 
     function openPet(pet: Pet) {
         setSelectedPet(pet);
+    }
+
+    function startAdoption(pet: Pet) {
+        setSelectedPet(null);
+        onAdopt(pet);
     }
 
     function handleCardKeyDown(event: KeyboardEvent<HTMLElement>, pet: Pet) {
@@ -93,7 +102,6 @@ export default function Gallery() {
                         tabIndex={0}
                         onClick={() => openPet(pet)}
                         onKeyDown={(event) => handleCardKeyDown(event, pet)}
-                        aria-label={`Ver detalhes de ${pet.name}`}
                     >
                         <div className="pet-image-wrap">
                             <img
@@ -105,13 +113,12 @@ export default function Gallery() {
                                 className="favorite-button"
                                 type="button"
                                 onClick={(event) => event.stopPropagation()}
-                                aria-label={`Favoritar ${pet.name}`}
                             >
-                                <Heart size={18} aria-hidden="true" />
+                                <Heart size={18} />
                             </button>
                             <button className="profile-button" type="button">
                                 Ver perfil
-                                <ArrowUpRight size={12} aria-hidden="true" />
+                                <ArrowUpRight size={12} />
                             </button>
                         </div>
                         <div className="pet-info">
@@ -144,6 +151,7 @@ export default function Gallery() {
                     key={selectedPet.name}
                     pet={selectedPet}
                     onClose={closePet}
+                    onAdopt={startAdoption}
                 />
             )}
         </section>
